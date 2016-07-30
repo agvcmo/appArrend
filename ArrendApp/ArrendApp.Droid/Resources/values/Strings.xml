@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string name="hello">Hello World, Click Me!</string>
+	<string name="app_name">ArrendApp</string>
+  <string name="DrawerAbierto">Seleccione una opción</string>
+  <string name="DrawerCerrado">ArrendApp</string>
+  <string name="ActAdministrarInmueble">Administrar Inmueble</string>
+  <string name="ActIniciarSesion">Iniciar sesión</string>
+  <string name="ActCerrarSesion">Cerrar sesión</string>
+  <string name="ActCrearUsuario">Crear usuarios</string>
+  <string name="ActCrearInmueble">Crear inmuebles</string>
+  <string name="ActReportes">Reportes</string>
+</resources>
