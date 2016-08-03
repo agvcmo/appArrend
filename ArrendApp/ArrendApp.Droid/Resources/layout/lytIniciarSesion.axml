@@ -1,13 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:layout_margin="16dp">
     <TextView
-        
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@string/ActIniciarSesion" 
-        android:text="@string/ActIniciarSesion"/>
-</LinearLayout>
+        android:id="@+id/TxvTitulo"
+        android:text="@string/ActIniciarSesion"
+        android:layout_centerHorizontal="true" />
+    <TextView
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/TxvUsuario"
+        android:text="@string/TxvUsuario"
+        android:layout_marginTop="24dp"
+        android:layout_below="@id/TxvTitulo" />
+    <EditText
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/EdtUsuario"
+        android:hint="@string/TxvUsuario"
+        android:layout_below="@id/TxvUsuario" />
+    <TextView
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/TxvConstrasena"
+        android:text="@string/TxvContrasena"
+        android:layout_below="@id/EdtUsuario"
+        android:layout_marginTop="24dp" />
+    <EditText
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/EdtConstrasena"
+        android:hint="@string/TxvContrasena"
+        android:layout_below="@id/TxvConstrasena" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/BtnLimpiar"
+        android:text="@string/BtnLimpiar"
+        android:layout_below="@id/EdtConstrasena"
+        android:layout_marginTop="24dp"
+        android:layout_centerHorizontal="true" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/BtnIngresar"
+        android:text="@string/BtnIngresar"
+        android:layout_below="@id/EdtConstrasena"
+        android:layout_marginTop="24dp"
+        android:layout_centerHorizontal="true"
+        android:layout_toRightOf="@id/BtnLimpiar" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/BtnRecuperarContrasena"
+        android:text="@string/BtnRecuperar"
+        android:layout_below="@id/BtnIngresar"
+        android:layout_marginTop="16dp"
+        android:layout_centerHorizontal="true" />
+</RelativeLayout>

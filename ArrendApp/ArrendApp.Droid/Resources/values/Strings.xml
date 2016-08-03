@@ -10,4 +10,9 @@
   <string name="ActCrearUsuario">Crear usuarios</string>
   <string name="ActCrearInmueble">Crear inmuebles</string>
   <string name="ActReportes">Reportes</string>
+  <string name="TxvUsuario"> Usuario</string>
+  <string name="TxvContrasena"> Contraseña</string>
+  <string name="BtnIngresar">Ingresar</string>
+  <string name="BtnLimpiar">Limpiar </string>
+  <string name="BtnRecuperar">Recuperar contraseña</string>
 </resources>
