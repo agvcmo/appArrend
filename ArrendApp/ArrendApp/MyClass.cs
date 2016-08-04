@@ -6,6 +6,7 @@ namespace ArrendApp
     {
         public MyClass()
         {
+
         }
     }
 }
