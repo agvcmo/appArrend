@@ -13,4 +13,6 @@
        android:layout_height="wrap_content"
        android:id="@string/ActCrearInmueble"
        android:text="@string/ActCrearInmueble"/>
+
+
 </LinearLayout>
