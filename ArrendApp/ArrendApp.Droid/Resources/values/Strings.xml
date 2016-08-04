@@ -12,6 +12,12 @@
   <string name="ActReportes">Reportes</string>
   <string name="TxvUsuario"> Usuario</string>
   <string name="TxvContrasena"> Contraseña</string>
+  <string name="TxvPNombre">Primer Nombre</string>
+  <string name="TxvSNombre">Segundo Nombre</string>
+  <string name="TxvApellidos">Apellidos</string>
+  <string name="TxvTipoID">Tipo Identificación</string>
+  <string name="TxvNumeroID">Número de Identificación</string>
+  <string name="TxvTipoUsuario">Tipo de Usuario</string>
   <string name="BtnIngresar">Ingresar</string>
   <string name="BtnLimpiar">Limpiar </string>
   <string name="BtnRecuperar">Recuperar contraseña</string>
