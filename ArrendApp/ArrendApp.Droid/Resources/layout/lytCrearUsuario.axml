@@ -1,17 +1,105 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="horizontal"
-    android:baselineAligned="false"
-    android:layout_margin="16dp">
+    android:layout_height="match_parent">
     <RelativeLayout
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="1">
-        </RelativeLayout>
+        android:layout_weight="1"
+        android:layout_height="fill_parent"
+        android:layout_width="fill_parent"
+        android:layout_margin="16dp">
+        <TextView
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/TxvPNombre"
+            android:text="@string/TxvPNombre" />
+        <EditText
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/EdtPNombre"
+            android:hint="@string/TxvPNombre"
+            android:layout_below="@id/TxvPNombre"
+            android:maxLines="1" />
+        <TextView
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/TxvApellido"
+            android:text="@string/TxvApellidos"
+            android:layout_below="@id/EdtPNombre" />
+        <EditText
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/EdtPNombre"
+            android:hint="@string/TxvApellidos"
+            android:layout_below="@id/TxvApellido"
+            android:maxLines="1" />
+        <TextView
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/TxvTipoID"
+            android:text="@string/TxvTipoID"
+            android:layout_below="@id/EdtPNombre" />
+        <EditText
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/EdtTipoID"
+            android:hint="@string/TxvTipoID"
+            android:layout_below="@id/TxvTipoID"
+            android:maxLines="1" />
+    </RelativeLayout>
     <RelativeLayout
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="1" />
-    </LinearLayout>
+        android:layout_weight="1"
+        android:layout_height="fill_parent"
+        android:layout_width="fill_parent"
+        android:layout_margin="16dp">
+        <TextView
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/TxvSNombre"
+            android:text="@string/TxvSNombre" />
+        <EditText
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/EdtSNombre"
+            android:hint="@string/TxvSNombre"
+            android:layout_below="@id/TxvSNombre"
+            android:maxLines="1" />
+        <TextView
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/TxvTipoUsuario"
+            android:text="@string/TxvTipoUsuario"
+            android:layout_below="@id/EdtSNombre" />
+        <EditText
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/EdtTipoUsuario"
+            android:hint="@string/TxvTipoUsuario"
+            android:layout_below="@id/TxvTipoUsuario"
+            android:maxLines="1" />
+        <TextView
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/TxvNumeroID"
+            android:text="@string/TxvNumeroID"
+            android:layout_below="@id/EdtTipoUsuario" />
+        <EditText
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/EdtNumeroID"
+            android:hint="@string/TxvNumeroID"
+            android:layout_below="@id/TxvNumeroID"
+            android:maxLines="1" />
+    </RelativeLayout>
+</LinearLayout>
