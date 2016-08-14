@@ -11,42 +11,39 @@
         android:id="@+id/TxvTitulo"
         android:text="@string/ActIniciarSesion"
         android:layout_centerHorizontal="true" />
-    <TextView
-        android:textAppearance="?android:attr/textAppearanceLarge"
+    <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/TxvUsuario"
-        android:text="@string/TxvUsuario"
-        android:layout_marginTop="24dp"
-        android:layout_below="@id/TxvTitulo" />
-    <EditText
-        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:layout_below="@id/TxvTitulo"
+        android:layout_marginTop="4dp">
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/EdtUsuario"
+            android:hint="@string/TxvUsuario"
+            android:maxLines="1"/>
+    </android.support.design.widget.TextInputLayout>
+    <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/EdtUsuario"
-        android:hint="@string/TxvUsuario"
-        android:layout_below="@id/TxvUsuario" />
-    <TextView
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/TxvConstrasena"
-        android:text="@string/TxvContrasena"
-        android:layout_below="@id/EdtUsuario"
-        android:layout_marginTop="24dp" />
-    <EditText
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/EdtConstrasena"
-        android:hint="@string/TxvContrasena"
-        android:layout_below="@id/TxvConstrasena" />
+        android:id="@+id/TxvContrasena"
+        android:layout_below="@id/TxvUsuario"
+        android:layout_marginTop="4dp">
+      <EditText
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:id="@+id/EdtConstrasena"
+          android:hint="@string/TxvContrasena"
+          android:maxLines="1"
+          android:inputType="textPassword"/>
+    </android.support.design.widget.TextInputLayout>
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/BtnLimpiar"
         android:text="@string/BtnLimpiar"
-        android:layout_below="@id/EdtConstrasena"
+        android:layout_below="@id/TxvContrasena"
         android:layout_marginTop="24dp"
         android:layout_centerHorizontal="true" />
     <Button
@@ -54,7 +51,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/BtnIngresar"
         android:text="@string/BtnIngresar"
-        android:layout_below="@id/EdtConstrasena"
+        android:layout_below="@id/TxvContrasena"
         android:layout_marginTop="24dp"
         android:layout_centerHorizontal="true"
         android:layout_toRightOf="@id/BtnLimpiar" />

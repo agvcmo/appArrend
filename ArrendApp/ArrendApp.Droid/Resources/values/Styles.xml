@@ -1,13 +1,13 @@
 ﻿<?xml version="1.0" encoding="UTF-8" ?>
 <resources>
-
-  <style name="Tema" parent="Theme.AppCompat.Light.NoActionBar">
+  <style name="MyTheme.Base" parent="Theme.AppCompat.Light.DarkActionBar">
+    <item name="windowNoTitle">true</item>
+    <item name="windowActionBar">false</item>
+    <item name="colorControlNormal">#0C92CF</item>
     <item name="colorPrimary">#2196F3</item>
-    <item name="drawerArrowStyle">@style/EstiloFlecha</item>
+    <item name="colorPrimaryDark">#1976D2</item>
+    <item name="colorAccent">#0C92CF</item>
   </style>
-
-  <style name="EstiloFlecha" parent="Widget.AppCompat.DrawerArrowToggle">
-    <item name="color">#F5F5F5</item>
-    <item name="spinBars">true</item>
+  <style name="MyTheme" parent="MyTheme.Base">
   </style>
 </resources>

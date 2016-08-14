@@ -1,105 +1,153 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:layout_margin="16dp">
     <RelativeLayout
         android:layout_weight="1"
         android:layout_height="fill_parent"
         android:layout_width="fill_parent"
         android:layout_margin="16dp">
-        <TextView
-            android:textAppearance="?android:attr/textAppearanceLarge"
+        <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/TxvPNombre"
-            android:text="@string/TxvPNombre" />
-        <EditText
-            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:id="@+id/TxvNombres">
+            <EditText
+                android:id="@+id/EdtNombres"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/TxvNombres"
+                android:maxLines="1" />
+        </android.support.design.widget.TextInputLayout>
+        <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/EdtPNombre"
-            android:hint="@string/TxvPNombre"
-            android:layout_below="@id/TxvPNombre"
-            android:maxLines="1" />
-        <TextView
-            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:id="@+id/TxvSApellido"
+            android:layout_below="@id/TxvNombres"
+            android:layout_marginTop="4dp">
+            <EditText
+                android:id="@+id/EdtSApellido"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/TxvSApellido"
+                android:maxLines="1" />
+        </android.support.design.widget.TextInputLayout>
+        <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/TxvApellido"
-            android:text="@string/TxvApellidos"
-            android:layout_below="@id/EdtPNombre" />
-        <EditText
-            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:id="@+id/TxvContrasena"
+            android:layout_below="@id/TxvSApellido"
+            android:layout_marginTop="4dp">
+            <EditText
+                android:id="@+id/EdtClave"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/TxvContrasena"
+                android:maxLines="1"
+                android:inputType="textPassword"/>
+        </android.support.design.widget.TextInputLayout>
+        <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/EdtPNombre"
-            android:hint="@string/TxvApellidos"
-            android:layout_below="@id/TxvApellido"
-            android:maxLines="1" />
-        <TextView
-            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:id="@+id/TxvCelular"
+            android:layout_below="@id/TxvContrasena"
+            android:layout_marginTop="4dp">
+            <EditText
+                android:id="@+id/EdtCelular"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/TxvCelular"
+                android:maxLines="1" />
+        </android.support.design.widget.TextInputLayout>
+        <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/TxvTipoID"
-            android:text="@string/TxvTipoID"
-            android:layout_below="@id/EdtPNombre" />
-        <EditText
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:layout_width="match_parent"
+            android:id="@+id/TxvEdad"
+            android:layout_below="@id/TxvCelular"
+            android:layout_marginTop="4dp">
+            <EditText
+                android:id="@+id/EdtEdad"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/TxvEdad"
+                android:maxLines="1"
+                android:inputType="number"/>
+        </android.support.design.widget.TextInputLayout>
+         <Button
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/EdtTipoID"
-            android:hint="@string/TxvTipoID"
-            android:layout_below="@id/TxvTipoID"
-            android:maxLines="1" />
+            android:id="@+id/BtnLimpiar"
+            android:text="@string/BtnLimpiar"
+            android:layout_below="@id/TxvCelular"
+            android:layout_marginTop="24dp"
+            android:layout_centerHorizontal="true" />
     </RelativeLayout>
     <RelativeLayout
         android:layout_weight="1"
         android:layout_height="fill_parent"
         android:layout_width="fill_parent"
         android:layout_margin="16dp">
-        <TextView
-            android:textAppearance="?android:attr/textAppearanceLarge"
+        <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/TxvSNombre"
-            android:text="@string/TxvSNombre" />
-        <EditText
-            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:id="@+id/TxvPApellido">
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/EdtPApellido"
+                android:hint="@string/TxvPApellido"
+                android:layout_below="@id/TxvPApellido"
+                android:maxLines="1" />
+        </android.support.design.widget.TextInputLayout>
+        <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/EdtSNombre"
-            android:hint="@string/TxvSNombre"
-            android:layout_below="@id/TxvSNombre"
-            android:maxLines="1" />
-        <TextView
-            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:id="@+id/TxvNombreUsuario"
+            android:layout_below="@id/TxvPApellido"
+            android:layout_marginTop="4dp">
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/EdtNombreUsuario"
+                android:hint="@string/TxvNombreUsuario"
+                android:layout_below="@id/TxvNombreUsuario"
+                android:maxLines="1" />
+        </android.support.design.widget.TextInputLayout>
+        <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/TxvTipoUsuario"
-            android:text="@string/TxvTipoUsuario"
-            android:layout_below="@id/EdtSNombre" />
-        <EditText
-            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:id="@+id/TxvTelefono"
+            android:layout_below="@id/TxvNombreUsuario"
+            android:layout_marginTop="4dp">
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/EdtTelefono"
+                android:hint="@string/TxvTelefono"
+                android:layout_below="@id/TxvTelefono"
+                android:maxLines="1" />
+        </android.support.design.widget.TextInputLayout>
+        <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/EdtTipoUsuario"
-            android:hint="@string/TxvTipoUsuario"
-            android:layout_below="@id/TxvTipoUsuario"
-            android:maxLines="1" />
-        <TextView
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:layout_width="match_parent"
+            android:id="@+id/TxvDireccion"
+            android:layout_below="@id/TxvTelefono"
+            android:layout_marginTop="4dp">
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/EdtDireccion"
+                android:hint="@string/TxvDireccion"
+                android:layout_below="@id/TxvDireccion"
+                android:maxLines="1" />
+        </android.support.design.widget.TextInputLayout>
+          <Button
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/TxvNumeroID"
-            android:text="@string/TxvNumeroID"
-            android:layout_below="@id/EdtTipoUsuario" />
-        <EditText
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/EdtNumeroID"
-            android:hint="@string/TxvNumeroID"
-            android:layout_below="@id/TxvNumeroID"
-            android:maxLines="1" />
+            android:id="@+id/BtnIngresar"
+            android:text="@string/BtnIngresar"
+            android:layout_below="@id/TxvTelefono"
+            android:layout_marginTop="24dp"
+            android:layout_centerHorizontal="true" />
     </RelativeLayout>
 </LinearLayout>

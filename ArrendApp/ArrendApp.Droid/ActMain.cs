@@ -1,227 +1,124 @@
-﻿using System;
-
-using Android.App;
-using Android.Content;
-using Android.Runtime;
-using Android.Views;
-using Android.Widget;
+﻿using Android.Widget;
 using Android.OS;
-using SupportToolbar = Android.Support.V7.Widget.Toolbar;
-using SupportFragment = Android.Support.V4.App.Fragment;
-using Android.Support.V7.App;
+using Android.Support.Design;
 using Android.Support.V4.Widget;
-using System.Collections.Generic;
+using Android.Support.V7.Widget;
+using Android.Support.V7.App;
+using Android.Views;
+using Android.App;
+using Android.Support.Design.Widget;
 
 namespace ArrendApp.Droid
 {
-    [Activity(Label = "ArrendApp", MainLauncher = true, Icon = "@drawable/icon", Theme = "@style/Tema")]
-    public class ActMain : ActionBarActivity
+    [Activity(Label = "ArrendApp", MainLauncher = true, Icon = "@drawable/icon")]
+    public class ActMain : AppCompatActivity
     {
-        private SupportToolbar mToolbar;
-        private DrawerLayout_V7_Tutorial.MyActionBarDrawerToggle mDrawerToggle;
-        private DrawerLayout mDrawerLayout;
-        private ListView mLeftDrawer;
-        private ActIniciarSesion iniciarSesionFrag;
-        private ActCrearUsuario crearUsuarioFrag;        
-        private ActCrearInmueble crearInmuebleFrag;
-        private ActAdministrarInmueble administrarInmuebleFrag;
-        private ActReportes reportesFrag;
-        private ActCerrarSesion cerrarSesionFrag;
-        private SupportFragment mCurrentFragment = new SupportFragment();
-        private Stack<SupportFragment> mStackFragments;
 
-        private ArrayAdapter mLeftAdapter;
-
-        private List<string> mLeftDataSet;
-  
- protected override void OnCreate(Bundle bundle)
+        DrawerLayout drawerLayout;
+        NavigationView navigationView;
+        protected override void OnCreate(Bundle savedInstanceState)
         {
-            base.OnCreate(bundle);
 
-            // Set our view from the "main" layout resource
+            base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.lytMain);
+            drawerLayout = FindViewById<DrawerLayout>(Resource.Id.drawer_layout);
 
-            mToolbar = FindViewById < SupportToolbar > (Resource.Id.toolbar);
-            mDrawerLayout = FindViewById < DrawerLayout > (Resource.Id.drawer_layout);
-            mLeftDrawer = FindViewById < ListView > (Resource.Id.left_drawer);
-            iniciarSesionFrag = new ActIniciarSesion();
-            crearUsuarioFrag = new ActCrearUsuario();
-            crearInmuebleFrag = new ActCrearInmueble();
-            administrarInmuebleFrag = new ActAdministrarInmueble();
-            reportesFrag = new ActReportes();
-            cerrarSesionFrag = new ActCerrarSesion();
-            mStackFragments = new Stack<SupportFragment >();
+            // Init toolbar
+            var toolbar = FindViewById<Android.Support.V7.Widget.Toolbar>(Resource.Id.app_bar);
+            SetSupportActionBar(toolbar);
+            SupportActionBar.SetTitle(Resource.String.app_name);
+            SupportActionBar.SetDisplayHomeAsUpEnabled(true);
+            SupportActionBar.SetDisplayShowHomeEnabled(true);
 
+            // Attach item selected handler to navigation view
+            navigationView = FindViewById<NavigationView>(Resource.Id.nav_view);
+            navigationView.NavigationItemSelected += NavigationView_NavigationItemSelected;
 
-            mLeftDrawer.Tag = 0;
+            // Create ActionBarDrawerToggle button and add it to the toolbar
+            var drawerToggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, Resource.String.DrawerAbierto, Resource.String.DrawerCerrado);
+            drawerLayout.SetDrawerListener(drawerToggle);
+            drawerToggle.SyncState();
 
-
-            SetSupportActionBar(mToolbar);
-
-            mLeftDataSet = new List<string>();
-            mLeftDataSet.Add("Iniciar sesión");
-            mLeftDataSet.Add("Crear usuario");
-            mLeftDataSet.Add("Crear inmueble");
-            mLeftDataSet.Add("Administrar inmueble");
-            mLeftDataSet.Add("Reportes");
-            mLeftDataSet.Add("Cerrar sesión");
-            mLeftAdapter = new ArrayAdapter<string> (this, Android.Resource.Layout.SimpleListItem1, mLeftDataSet);
-            mLeftDrawer.Adapter = mLeftAdapter;
-            mLeftDrawer.ItemClick += MenuListView_ItemClick;
-
-
-            mDrawerToggle = new DrawerLayout_V7_Tutorial.MyActionBarDrawerToggle(
-            this, //Host Activity
-            mDrawerLayout, //DrawerLayout
-            Resource.String.DrawerAbierto, //Opened Message
-            Resource.String.DrawerCerrado //Closed Message
-            );
-
-            mDrawerLayout.SetDrawerListener(mDrawerToggle);
-            SupportActionBar.SetHomeButtonEnabled(true);
-            SupportActionBar.SetDisplayShowTitleEnabled(true);
-            mDrawerToggle.SyncState();
-
-            if (bundle != null)
-            {
-                if (bundle.GetString("DrawerState") == "Opened")
-                {
-                    SupportActionBar.SetTitle(Resource.String.DrawerAbierto);
-                }
-
-                else
-                {
-                    SupportActionBar.SetTitle(Resource.String.DrawerCerrado);
-                }
-            }
-
-            else
-            {
-                //This is the first the time the activity is ran
-                SupportActionBar.SetTitle(Resource.String.DrawerCerrado);
-            }
-
-            Android.Support.V4.App.FragmentTransaction tx = SupportFragmentManager.BeginTransaction();
-
-            tx.Add(Resource.Id.main, iniciarSesionFrag);
-            tx.Add(Resource.Id.main, crearUsuarioFrag);
-            tx.Add(Resource.Id.main, crearInmuebleFrag);
-            tx.Add(Resource.Id.main, administrarInmuebleFrag);
-            tx.Add(Resource.Id.main, reportesFrag);
-            tx.Add(Resource.Id.main, cerrarSesionFrag);
-            tx.Hide(cerrarSesionFrag);
-
-            mCurrentFragment = iniciarSesionFrag;
-            tx.Commit();
+            //load default home screen
+            var ft = FragmentManager.BeginTransaction();
+            ft.AddToBackStack(null);
+            ft.Add(Resource.Id.HomeFrameLayout, new HomeFragment());
+            ft.Commit();
         }
-        void MenuListView_ItemClick(object sender, AdapterView.ItemClickEventArgs e)
+        //define custom title text
+        protected override void OnResume()
         {
-            Android.Support.V4.App.Fragment fragment = null;
-
-            switch (e.Id)
-            {
-                case 0:
-                    ShowFragment(iniciarSesionFrag);
-                    break;
-                case 1:
-                    ShowFragment(crearUsuarioFrag);
-                    break;
-                case 2:
-                    ShowFragment(crearInmuebleFrag);
-                    break;
-                case 3:
-                    ShowFragment(administrarInmuebleFrag);
-                    break;
-                case 4:
-                    ShowFragment(reportesFrag);
-                    break;
-                case 5:
-                    ShowFragment(cerrarSesionFrag);
-                    break;
-            }
-
-            mDrawerLayout.CloseDrawers();
-            mDrawerToggle.SyncState();
-
-            //SupportFragmentManager.BeginTransaction().Replace(Resource.Id.main, fragment).Commit();
-
-
-            mDrawerLayout.CloseDrawers();
-            mDrawerToggle.SyncState();
-
+            SupportActionBar.SetTitle(Resource.String.app_name);
+            base.OnResume();
         }
-        private void ShowFragment(SupportFragment fragment)
+        //define action for navigation menu selection
+        void NavigationView_NavigationItemSelected(object sender, NavigationView.NavigationItemSelectedEventArgs e)
         {
-
-            if (fragment.IsVisible)
+            switch (e.MenuItem.ItemId)
             {
-                return;
+                case (Resource.Id.nav_login):
+                    {
+                        Toast.MakeText(this, "Login!", ToastLength.Short).Show();
+                        StartActivity(typeof(ActIniciarSesion));
+                        break;
+                    }
+                case (Resource.Id.nav_crear_usuarios):
+                    {
+                        Toast.MakeText(this, "Crear usuarios!", ToastLength.Short).Show();
+                        StartActivity(typeof(ActCrearUsuario));
+                        break;
+                    }
+                case (Resource.Id.nav_crear_inmuebles):
+                    {
+                        Toast.MakeText(this, "Crear inmuebles!", ToastLength.Short).Show();
+                        StartActivity(typeof(ActCrearInmueble));
+                        break;
+                    }
+                case (Resource.Id.nav_reportes):
+                    Toast.MakeText(this, "Reportes!", ToastLength.Short).Show();
+                    break;
             }
-
-            var trans = SupportFragmentManager.BeginTransaction();
-
-
-            fragment.View.BringToFront();
-            mCurrentFragment.View.BringToFront();
-
-            trans.Hide(mCurrentFragment);
-            trans.Show(fragment);
-
-            trans.AddToBackStack(null);
-            mStackFragments.Push(mCurrentFragment);
-            trans.Commit();
-
-            mCurrentFragment = fragment;
-
+            // Close drawer
+            drawerLayout.CloseDrawers();
         }
+
+        //add custom icon to tolbar
+        public override bool OnCreateOptionsMenu(Android.Views.IMenu menu)
+        {
+            MenuInflater.Inflate(Resource.Menu.action_menu, menu);
+            if (menu != null)
+            {
+                menu.FindItem(Resource.Id.action_refresh).SetVisible(true);
+                menu.FindItem(Resource.Id.action_attach).SetVisible(false);
+            }
+            return base.OnCreateOptionsMenu(menu);
+        }
+        //define action for tolbar icon press
         public override bool OnOptionsItemSelected(IMenuItem item)
         {
             switch (item.ItemId)
             {
                 case Android.Resource.Id.Home:
-                    //The hamburger icon was clicked which means the drawer toggle will handle the event
-                    mDrawerToggle.OnOptionsItemSelected(item);
+                    //this.Activity.Finish();
                     return true;
-                    
-                case Resource.Id.action_ayuda:
+                case Resource.Id.action_attach:
+                    //FnAttachImage();
                     return true;
-
                 default:
                     return base.OnOptionsItemSelected(item);
             }
         }
-
-        public override bool OnCreateOptionsMenu(IMenu menu)
+        //to avoid direct app exit on backpreesed and to show fragment from stack
+        public override void OnBackPressed()
         {
-            MenuInflater.Inflate(Resource.Menu.action_menu, menu);
-            return base.OnCreateOptionsMenu(menu);
-        }
-
-        protected override void OnSaveInstanceState(Bundle outState)
-        {
-            if (mDrawerLayout.IsDrawerOpen((int)GravityFlags.Left))
+            if (FragmentManager.BackStackEntryCount != 0)
             {
-                outState.PutString("DrawerState", "Opened");
+                FragmentManager.PopBackStack();// fragmentManager.popBackStack();
             }
-
             else
             {
-                outState.PutString("DrawerState", "Closed");
+                base.OnBackPressed();
             }
-
-            base.OnSaveInstanceState(outState);
-        }
-
-        protected override void OnPostCreate(Bundle savedInstanceState)
-        {
-            base.OnPostCreate(savedInstanceState);
-            mDrawerToggle.SyncState();
-        }
-
-        public override void OnConfigurationChanged(Android.Content.Res.Configuration newConfig)
-        {
-            base.OnConfigurationChanged(newConfig);
-            mDrawerToggle.OnConfigurationChanged(newConfig);
         }
     }
 }

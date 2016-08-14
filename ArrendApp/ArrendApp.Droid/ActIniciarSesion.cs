@@ -18,14 +18,14 @@ using System.Collections.Generic;
 
 namespace ArrendApp.Droid
 {
-    class ActIniciarSesion : Android.Support.V4.App.Fragment
+    [Activity(Label = "IniciarSesion", MainLauncher = false, Icon = "@drawable/icon")]
+    class ActIniciarSesion : Android.App.Activity
     {
-        private View mView;
-        private EditText mEdtUsuario;
-        private EditText mEdtContrasena;
-        private Button mBtnLimpiar;
-        private Button mBtnIngresar;
-        private Button mBtnRecuperar;
+        private EditText oEdtUsuario;
+        private EditText oEdtContrasena;
+        private Button oBtnLimpiar;
+        private Button oBtnIngresar;
+        private Button oBtnRecuperar;
 
         public ActIniciarSesion()
         {
@@ -33,41 +33,38 @@ namespace ArrendApp.Droid
         }
 
         
-        private void mCrearControles()
+        private void mInstanciarControles()
         {
-            mEdtUsuario    = mView.FindViewById<EditText>(Resource.Id.EdtUsuario);
-            mEdtContrasena = mView.FindViewById<EditText>(Resource.Id.EdtConstrasena);
-            mBtnLimpiar    = mView.FindViewById<Button>(Resource.Id.BtnLimpiar);
-            mBtnIngresar   = mView.FindViewById<Button>(Resource.Id.BtnIngresar);
-            mBtnRecuperar  = mView.FindViewById<Button>(Resource.Id.BtnRecuperarContrasena);
+            oEdtUsuario    = this.FindViewById<EditText>(Resource.Id.EdtUsuario);
+            oEdtContrasena = this.FindViewById<EditText>(Resource.Id.EdtConstrasena);
+            oBtnLimpiar    = this.FindViewById<Button>(Resource.Id.BtnLimpiar);
+            oBtnIngresar   = this.FindViewById<Button>(Resource.Id.BtnIngresar);
+            oBtnRecuperar  = this.FindViewById<Button>(Resource.Id.BtnRecuperarContrasena);
         }
 
         private void mCrearEventos()
         {
-            mBtnLimpiar.Click += delegate {
-                mEdtUsuario.SetText("",TextView.BufferType.Editable);
-                mEdtContrasena.SetText("", TextView.BufferType.Editable);
+            oBtnLimpiar.Click += delegate {
+                Toast.MakeText(this, "Limpiar!", ToastLength.Short).Show();
+                oEdtUsuario.SetText("", TextView.BufferType.Editable);
+                oEdtContrasena.SetText("", TextView.BufferType.Editable);
             };
+            oBtnIngresar.Click += delegate {
+                Toast.MakeText(this, "Ingresar!", ToastLength.Short).Show();
+            };
+            oBtnRecuperar.Click += delegate
+            {
+                Toast.MakeText(this, "Recuperar!", ToastLength.Short).Show();
+            };
+
         }
 
-        public static Android.Support.V4.App.Fragment newInstance(Context context)
-        {
-            ActIniciarSesion busrouteFragment = new ActIniciarSesion();
-            return busrouteFragment;
-        }
-        public override void OnCreate(Bundle savedInstanceState)
+        protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
-        }
-        public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
-        {
-            mView = (ViewGroup)inflater.Inflate(Resource.Layout.lytIniciarSesion, null);
-            mCrearControles();
-            return mView;
-        }
-
-
-
-       
+            this.SetContentView(Resource.Layout.lytIniciarSesion);
+            mInstanciarControles();
+            mCrearEventos();
+        }       
     }
 }
